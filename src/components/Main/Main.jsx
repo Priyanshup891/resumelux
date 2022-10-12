@@ -19,7 +19,7 @@ const Main = () => {
         <Content>
             <ResumeBuilder/>
             <ResumeDisplay/>
-            <button onClick={handlePrint}>Download</button>
+            {/* <button onClick={handlePrint}>Download</button> */}
         </Content>
     </MainContainer>
   )
