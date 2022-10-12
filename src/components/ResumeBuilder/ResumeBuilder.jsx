@@ -40,7 +40,7 @@ const ResumeBuilder = () => {
 }
 
 const BuilderContainer = styled.div`
-
+width:500px ;
 `;
 
 const STabs = styled(Tabs)`

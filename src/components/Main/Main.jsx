@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import mainBg from '../../assets/images/mainBg3.png';
 import ResumeBuilder from '../ResumeBuilder/ResumeBuilder';
 import ResumeDisplay from '../ResumeDisplay/ResumeDisplay';
+import { useReactToPrint } from 'react-to-print';
+import { ResumeContext } from '../../context/resumeContext';
 
 const Main = () => {
+
+  const {printElm} = useContext(ResumeContext);
+
+  const handlePrint = useReactToPrint({
+    content: () => printElm.current,
+  })
+
   return (
     <MainContainer>
         <Content>
             <ResumeBuilder/>
             <ResumeDisplay/>
+            <button onClick={handlePrint}>Download</button>
         </Content>
     </MainContainer>
   )
@@ -29,6 +39,7 @@ flex-direction:row ;
 align-items:flex-start ;
 justify-content:space-between ;
 padding: 2rem 6rem ;
+gap:2rem;
 `;
 
 export default Main
