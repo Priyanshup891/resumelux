@@ -7,7 +7,7 @@ import { ResumeContext } from "../../context/resumeContext";
 import person from "../../assets/images/person.jpg";
 
 const ResumeDisplay = () => {
-  const { printElm, about, education } = useContext(ResumeContext);
+  const { printElm, about, education, work } = useContext(ResumeContext);
   return (
     <DisplayContainer>
       <ResumePreview ref={printElm}>
@@ -56,81 +56,18 @@ const ResumeDisplay = () => {
           <WorkProjects>
             <div>
               <h2>Work experience</h2>
+              {
+                work.map((wo) => (
               <Work>
-                <h3>Full Stack Developer</h3>
+                <h3>{wo.position}</h3>
                 <h4>
-                  XYZ Infotech Services - <span>Full-time</span>
+                  {wo.company} - <span>{wo.type}</span>
                 </h4>
-                <span>2018-03 - 2021-12</span>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />
-                  • Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                  <br />
-                  • Conducted A/B tests for product features and design
-                  variations.
-                  <br />
-                  • Led the design process during of the internal rebranding
-                  project.
-                  <br />• Supported the engineering team with design
-                  deliverables.
-                </p>
+                <span>{wo.startDate} - {wo.endDate}</span>
+                <p>{wo.description}</p>
               </Work>
-              <Work>
-                <h3>Full Stack Developer</h3>
-                <h4>
-                  XYZ Infotech Services - <span>Full-time</span>
-                </h4>
-                <span>2018-03 - 2021-12</span>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />
-                  • Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                  <br />
-                  • Conducted A/B tests for product features and design
-                  variations.
-                  <br />
-                  • Led the design process during of the internal rebranding
-                  project.
-                  <br />• Supported the engineering team with design
-                  deliverables.
-                </p>
-              </Work>
-              <Work>
-                <h3>Full Stack Developer</h3>
-                <h4>
-                  XYZ Infotech Services - <span>Full-time</span>
-                </h4>
-                <span>2018-03 - 2021-12</span>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />
-                  • Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                  <br />
-                  • Conducted A/B tests for product features and design
-                  variations.
-                  <br />
-                  • Led the design process during of the internal rebranding
-                  project.
-                  <br />• Supported the engineering team with design
-                  deliverables.
-                </p>
-              </Work>
+                ))
+              }
             </div>
             <div>
               <h2>Projects</h2>

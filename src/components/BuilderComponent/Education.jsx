@@ -31,7 +31,7 @@ const Education = () => {
 
   return (
     <EducationContainer>
-      <Accordion defaultIndex={[0]}>
+      <Accordion allowToggle defaultIndex={[0]}>
         {education.map((educa, index) => (
           <AccordionItem key={index}>
             <h2>
@@ -172,6 +172,7 @@ const YearGradeInfo = styled.div`
       color: #e5e5e5;
     }
   }
+}
 `;
 
 const AddMoreBtn = styled.button`
