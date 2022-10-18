@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import avatar from "../../assets/images/avatar.jpg";
+
 import { MdEmail, MdPhoneIphone, MdLocationPin, MdLink } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { ResumeContext } from "../../context/resumeContext";
-import person from "../../assets/images/person.jpg";
+
 
 const ResumeDisplay = () => {
   const { printElm, about, education, work } = useContext(ResumeContext);

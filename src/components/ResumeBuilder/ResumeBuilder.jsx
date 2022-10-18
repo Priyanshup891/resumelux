@@ -40,7 +40,7 @@ const ResumeBuilder = () => {
 }
 
 const BuilderContainer = styled.div`
-width:500px ;
+width:100% ;
 `;
 
 const STabs = styled(Tabs)`
@@ -61,6 +61,11 @@ list-style:none ;
 flex-direction:row ;
 align-items:center ;
 gap:2rem;
+
+@media (max-width: 1076px){
+  overflow:auto ;
+  padding-bottom: 1rem;
+}
 `;
 STabList.tabsRole = 'TabList';
 

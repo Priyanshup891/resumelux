@@ -27,6 +27,7 @@ height:calc(100vh - 70px) ;
 background-image:url(${opnerBg}) ;
 background-size:cover ;
 background-position:center ;
+padding:1rem ;
 `;
 
 const Content = styled.div`
@@ -38,6 +39,10 @@ align-items:center ;
 justify-content:center ;
 padding-top:4rem ;
 
+@media (max-width: 570px){
+  padding-top:0 ;
+}
+
 & > div{
     background: rgba(255, 255, 255, 0.19);
 border-radius: 16px;
@@ -45,29 +50,37 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(3.7px);
 -webkit-backdrop-filter: blur(3.7px);
 padding:1rem ;
-width:900px ;
-height:100% ;
+width:100% ;
+max-width:900px ;
+height:400px ;
 display:flex ;
 flex-direction:column ;
 align-items:center ;
 justify-content:center ;
 
+
 h1{
-    font-style: normal;
-font-weight: 600;
-font-size: 50px;
-color: #FFFFFF;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  color: #FFFFFF;
 }
 
 p{
-    font-style: normal;
-font-weight: 400;
-font-size: 14px;
-text-align: center;
-width:300px ;
-color: #A6A6A6;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  width:300px ;
+  color: #A6A6A6;
 }
 
+@media (max-width: 570px) {
+    height:300px ;
+    h1{
+      font-size:30px ;
+    }
+  }
 button{
     align-items: center;
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
@@ -112,7 +125,10 @@ button{
 }
 
 img{
-    height:400px ;
+    width:100% ;
+    max-width:600px ;
+    margin-top:0.5rem ;
+
 }
 `;
 

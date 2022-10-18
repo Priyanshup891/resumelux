@@ -28,6 +28,11 @@ width:100%;
 height:70px ;
 padding:1rem 6rem ;
 
+@media (max-width: 830px) {
+    padding:1rem;
+  }
+
+
 `;
 
 const Content = styled.div`
@@ -52,6 +57,11 @@ const NavLinks = styled.div`
 display:flex ;
 align-items:center ;
 gap:2rem;
+
+@media (max-width: 650px) {
+    display:none ;
+  }
+
 
 p{
     font-size:0.875rem ;

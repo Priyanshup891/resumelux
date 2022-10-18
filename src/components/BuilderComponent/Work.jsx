@@ -11,6 +11,7 @@ import { v4 as uuid } from "uuid";
 import { ResumeContext } from "../../context/resumeContext";
 import styled from "styled-components";
 
+
 const Work = () => {
   const { work, setWork } = useContext(ResumeContext);
 

@@ -34,6 +34,10 @@ height:calc(100vh - 70px) ;
 background-image:url(${mainBg}) ;
 background-size:cover ;
 background-position:center ;
+
+@media (max-width: 1076px){
+  height:100% ;
+}
 `;
 
 const Content = styled.div`
@@ -44,11 +48,17 @@ justify-content:space-between ;
 padding: 2rem 6rem ;
 gap:2rem;
 
+@media (max-width: 1076px){
+flex-direction:column ;
+padding:2rem 1rem ;
+}
+
 & > div{
 
   display:flex ;
   flex-direction:column ;
   align-items:flex-end ;
+  width:100% ;
 }
 `;
 
