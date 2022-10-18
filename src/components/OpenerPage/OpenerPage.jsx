@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import opnerBg from '../../assets/images/mainBg.png';
-import hero from '../../assets/images/hero.png';
+import hero from '../../assets/images/hero3.png';
 import { Link } from 'react-router-dom';
 
 const OpenerPage = () => {

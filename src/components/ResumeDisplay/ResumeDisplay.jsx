@@ -1,43 +1,54 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import avatar from "../../assets/images/avatar.jpg";
 import { MdEmail, MdPhoneIphone, MdLocationPin, MdLink } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { ResumeContext } from "../../context/resumeContext";
+import person from "../../assets/images/person.jpg";
 
 const ResumeDisplay = () => {
-
-  const {printElm} = useContext(ResumeContext);
-
+  const { printElm, about, education } = useContext(ResumeContext);
   return (
     <DisplayContainer>
       <ResumePreview ref={printElm}>
         <PersonInfo>
           <PersonProfile>
-            <Avatar>
-              <img src={avatar} alt="avatar" />
-            </Avatar>
+            {about.selectedFile && (
+              <Avatar>
+                <img src={about.selectedFile.base64} alt="avatar" />
+              </Avatar>
+            )}
+
             <div>
-              <h4>Product Designer</h4>
-              <h1>Kate Bishop</h1>
+              <h4>{about.role}</h4>
+              <h1>{about.name}</h1>
             </div>
           </PersonProfile>
           <PersonContact>
             <div>
               <MdEmail size={15} />
-              <span>example321@gmail.com</span>
+              <span>{about.email}</span>
             </div>
             <div>
               <MdPhoneIphone size={15} />
-              <span>+91-7387221290</span>
+              <span>{about.phone}</span>
             </div>
             <div>
               <MdLocationPin size={15} />
-              <span>Pune, India</span>
+              <span>{about.address}</span>
             </div>
             <div>
               <BsLinkedin size={15} />
-              <span>Linkedin</span>
+              {about.linkedin && (
+                <span>
+                  <a
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    href={about.linkedin}
+                  >
+                    Linkedin
+                  </a>
+                </span>
+              )}
             </div>
           </PersonContact>
         </PersonInfo>
@@ -120,7 +131,6 @@ const ResumeDisplay = () => {
                   deliverables.
                 </p>
               </Work>
-              
             </div>
             <div>
               <h2>Projects</h2>
@@ -177,22 +187,18 @@ const ResumeDisplay = () => {
           <EducationSkills>
             <div>
               <h2>Education</h2>
-              <Education>
-                <h3>Master’s in Human-Computer Interaction</h3>
-                <h4>Copenhagen School of Design and Technology</h4>
-                <div>
-                  <span>2014-2018</span>
-                  <span>9 CGPA</span>
-                </div>
-              </Education>
-              <Education>
-                <h3>Master’s in Human-Computer Interaction</h3>
-                <h4>Copenhagen School of Design and Technology</h4>
-                <div>
-                  <span>2014-2018</span>
-                  <span>9 CGPA</span>
-                </div>
-              </Education>
+              {education.map((educa) => (
+                <Education>
+                  <h3>{educa.degree}</h3>
+                  <h4>{educa.school}</h4>
+                  <div>
+                    <span>
+                      {educa.startYr}-{educa.endYr}
+                    </span>
+                    <span>{educa.grade}</span>
+                  </div>
+                </Education>
+              ))}
             </div>
             <div>
               <h2>Skills</h2>
@@ -456,7 +462,7 @@ const EducationSkills = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width:100% ;
+  width: 100%;
 
   & > div {
     display: flex;
@@ -498,8 +504,8 @@ const Education = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-between ;
-    width:100% ;
+    justify-content: space-between;
+    width: 100%;
 
     span {
       font-style: italic;
@@ -513,24 +519,24 @@ const Education = styled.div`
 `;
 
 const Skills = styled.div`
-display:flex ;
-flex-wrap:wrap ;
-gap:0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 
-& > div{
-  background-color:#999999 ;
-  padding:0.4rem 0.6rem  ;
-  border-radius:2rem ;
-  display:flex ;
+  & > div {
+    background-color: #999999;
+    padding: 0.4rem 0.6rem;
+    border-radius: 2rem;
+    display: flex;
 
-  span{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 9px;
-    line-height: 12px;
-    color:#fff ;
+    span {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 9px;
+      line-height: 12px;
+      color: #fff;
+    }
   }
-}
 `;
 
 export default ResumeDisplay;

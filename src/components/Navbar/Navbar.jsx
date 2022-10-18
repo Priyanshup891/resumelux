@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <NavbarContainer>
         <Content>
         <div>
+            <Link to="/" style={{textDecoration:"none"}}>
             <h1>resumelux</h1>
+            </Link>
             <NavLinks>
                 <p>Templates</p>
                 <p>Examples</p>
