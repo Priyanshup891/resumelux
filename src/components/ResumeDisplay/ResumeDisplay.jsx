@@ -20,35 +20,37 @@ const ResumeDisplay = () => {
             )}
 
             <div>
-              <h4>{about.role}</h4>
-              <h1>{about.name}</h1>
+              <h4>{about.role ? about.role : "Product Designer"}</h4>
+              <h1>{about.name ? about.name : "Kate Bishop"}</h1>
             </div>
           </PersonProfile>
           <PersonContact>
             <div>
               <MdEmail size={15} />
-              <span>{about.email}</span>
+              <span>{about.email ? about.email : "example321@gmail.com"}</span>
             </div>
             <div>
               <MdPhoneIphone size={15} />
-              <span>{about.phone}</span>
+              <span>{about.phone ? about.phone : "+91-9876543210"}</span>
             </div>
             <div>
               <MdLocationPin size={15} />
-              <span>{about.address}</span>
+              <span>{about.address ? about.address : "Delhi, India"}</span>
             </div>
             <div>
               <BsLinkedin size={15} />
-              {about.linkedin && (
-                <span>
-                  <a
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    href={about.linkedin}
-                  >
-                    Linkedin
-                  </a>
-                </span>
-              )}
+              <span>
+                <a
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  href={
+                    about.linkedin
+                      ? about.linkedin
+                      : "http://localhost:3000/resume"
+                  }
+                >
+                  Linkedin
+                </a>
+              </span>
             </div>
           </PersonContact>
         </PersonInfo>
@@ -56,16 +58,22 @@ const ResumeDisplay = () => {
           <WorkProjects>
             <div>
               <h2>Work experience</h2>
-              {work.map((wo,index) => (
+              {work.map((wo, index) => (
                 <Work key={index}>
-                  <h3>{wo.position}</h3>
+                  <h3>{wo.position ? wo.position : "Full Stack Developer"}</h3>
                   <h4>
-                    {wo.company} - <span>{wo.type}</span>
+                    {wo.company ? wo.company : "XYZ Infotech Services"} -{" "}
+                    <span>{wo.type ? wo.type : "Full-time"}</span>
                   </h4>
                   <span>
-                    {wo.startDate} - {wo.endDate}
+                    {wo.startDate ? wo.startDate : "2018-03"} -{" "}
+                    {wo.endDate ? wo.endDate : "2021-12"}
                   </span>
-                  <p>{wo.description}</p>
+                  <p>
+                    {wo.description
+                      ? wo.description
+                      : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe adipisci in eum quod sint nesciunt, autem ea eligendi eius id cum, quibusdam a, dolore praesentium magnam quas temporibus nemo. Quas!"}
+                  </p>
                 </Work>
               ))}
             </div>
@@ -73,7 +81,7 @@ const ResumeDisplay = () => {
               <h2>Projects</h2>
               {projects.map((project, index) => (
                 <Project key={index}>
-                  <h3>{project.name}</h3>
+                  <h3>{project.name ? project.name : "Website Clone"}</h3>
                   {project.url ? (
                     <a href={project.url}>
                       <h4>{project.name}</h4>
@@ -82,7 +90,7 @@ const ResumeDisplay = () => {
                   ) : (
                     ""
                   )}
-                  <p>{project.description}</p>
+                  <p>{project.description ? project.description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe adipisci in eum quod sint nesciunt, autem ea eligendi eius id cum, quibusdam a, dolore praesentium magnam quas temporibus nemo. Quas!"}</p>
                 </Project>
               ))}
             </div>
@@ -92,13 +100,13 @@ const ResumeDisplay = () => {
               <h2>Education</h2>
               {education.map((educa, index) => (
                 <Education key={index}>
-                  <h3>{educa.degree}</h3>
-                  <h4>{educa.school}</h4>
+                  <h3>{educa.degree ? educa.degree : "Master's in Human-Computer Interaction"}</h3>
+                  <h4>{educa.school ? educa.school : "Copenhagen School of Design and Technology"}</h4>
                   <div>
                     <span>
-                      {educa.startYr}-{educa.endYr}
+                      {educa.startYr ? educa.startYr : "2014"}-{educa.endYr ? educa.endYr : "2018"}
                     </span>
-                    <span>{educa.grade}</span>
+                    <span>{educa.grade ? educa.grade : "9 CGPA"}</span>
                   </div>
                 </Education>
               ))}
