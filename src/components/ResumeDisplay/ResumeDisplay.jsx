@@ -5,9 +5,9 @@ import { MdEmail, MdPhoneIphone, MdLocationPin, MdLink } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { ResumeContext } from "../../context/resumeContext";
 
-
 const ResumeDisplay = () => {
-  const { printElm, about, education, work } = useContext(ResumeContext);
+  const { printElm, about, education, work, projects, skills } =
+    useContext(ResumeContext);
   return (
     <DisplayContainer>
       <ResumePreview ref={printElm}>
@@ -56,76 +56,42 @@ const ResumeDisplay = () => {
           <WorkProjects>
             <div>
               <h2>Work experience</h2>
-              {
-                work.map((wo) => (
-              <Work>
-                <h3>{wo.position}</h3>
-                <h4>
-                  {wo.company} - <span>{wo.type}</span>
-                </h4>
-                <span>{wo.startDate} - {wo.endDate}</span>
-                <p>{wo.description}</p>
-              </Work>
-                ))
-              }
+              {work.map((wo,index) => (
+                <Work key={index}>
+                  <h3>{wo.position}</h3>
+                  <h4>
+                    {wo.company} - <span>{wo.type}</span>
+                  </h4>
+                  <span>
+                    {wo.startDate} - {wo.endDate}
+                  </span>
+                  <p>{wo.description}</p>
+                </Work>
+              ))}
             </div>
             <div>
               <h2>Projects</h2>
-              <Project>
-                <h3>Website Clone</h3>
-                <div>
-                  <h4>Website Clone</h4>
-                  <MdLink size={12} />
-                </div>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />• Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                </p>
-              </Project>
-              <Project>
-                <h3>Website Clone</h3>
-                <div>
-                  <h4>Website Clone</h4>
-                  <MdLink size={12} />
-                </div>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />• Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                </p>
-              </Project>
-              <Project>
-                <h3>Website Clone</h3>
-                <div>
-                  <h4>Website Clone</h4>
-                  <MdLink size={12} />
-                </div>
-                <p>
-                  • Designed end-to-end experience for financial products on
-                  mobile & web platforms.
-                  <br />
-                  • Working closely with managers, marketing specialists and
-                  developers.
-                  <br />• Did user testing sessions to gather feedback, validate
-                  product features and brand perception.
-                </p>
-              </Project>
+              {projects.map((project, index) => (
+                <Project key={index}>
+                  <h3>{project.name}</h3>
+                  {project.url ? (
+                    <a href={project.url}>
+                      <h4>{project.name}</h4>
+                      <MdLink size={12} />
+                    </a>
+                  ) : (
+                    ""
+                  )}
+                  <p>{project.description}</p>
+                </Project>
+              ))}
             </div>
           </WorkProjects>
           <EducationSkills>
             <div>
               <h2>Education</h2>
-              {education.map((educa) => (
-                <Education>
+              {education.map((educa, index) => (
+                <Education key={index}>
                   <h3>{educa.degree}</h3>
                   <h4>{educa.school}</h4>
                   <div>
@@ -140,45 +106,11 @@ const ResumeDisplay = () => {
             <div>
               <h2>Skills</h2>
               <Skills>
-                <div>
-                  <span>JavaScript</span>
-                </div>
-                <div>
-                  <span>ReactJS</span>
-                </div>
-                <div>
-                  <span>NodeJS</span>
-                </div>
-                <div>
-                  <span>MongoDB</span>
-                </div>
-                <div>
-                  <span>ExpressJS</span>
-                </div>
-                <div>
-                  <span>PHP</span>
-                </div>
-                <div>
-                  <span>.Net</span>
-                </div>
-                <div>
-                  <span>Java</span>
-                </div>
-                <div>
-                  <span>RestAPI</span>
-                </div>
-                <div>
-                  <span>jQuery</span>
-                </div>
-                <div>
-                  <span>MySQL</span>
-                </div>
-                <div>
-                  <span>Ajax</span>
-                </div>
-                <div>
-                  <span>Github</span>
-                </div>
+                {skills.map((skill, index) => (
+                  <div key={index}>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
               </Skills>
             </div>
           </EducationSkills>
@@ -370,11 +302,12 @@ const Project = styled.div`
     color: #222222;
   }
 
-  & > div {
+  & > a {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.2rem;
+    color: inherit;
 
     h4 {
       font-style: normal;
